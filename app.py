@@ -1,32 +1,39 @@
-def vragen_ophalen():
-    vragen = []
-    with open("", "r") as f:
-        content = f.read()
-        losse_zinnen = content.splitlines()
-        for zin in losse_zinnen:
-            vraag = {
-                "vraag": "",
-                "antwoorden": [],
-                "juiste_antwoord": ""
-            }
+import pygame
+import pandas as pd
+import datetime
 
-            zin_en_antwoord = zin.split(":")
-            vraag["vraag"] = zin_en_antwoord[0]
-            antwoorden = zin_en_antwoord[1].split("|")
+pygame.init()
 
-            gefilterde_antwoorden = []
-            for antwoord in antwoorden:
-                if antwoord.startswith("["):
-                    antwoord = antwoord.replace("[", "")
-                    vraag["juiste_antwoord"] = antwoord
-                gefilterde_antwoorden.append(antwoord)
-            vraag["antwoorden"] = gefilterde_antwoorden
-            vragen.append(vraag)
-        f.close()
-    return vragen
+scores_dict = {"SE": 0, "IAT": 0, "FICT": 0, "BDAM": 0}
+specialisatie_dict = {"A": "",
+                      "B": "",
+                      "C": "",
+                      "D": ""}
+
+
+def setup():
+    pd.set_option("display.max_columns", None)
+    pd.set_option("display.width", None)
+    pd.set_option("display.max_rows", None)
+    pygame.display.set_mode((640, 480))
+    pygame.display.set_caption("Sorteerhoed Applicatie | Alpha Lions")
+
+    return True
+
+def lees_vragenlijst():
+    vragenlijst = pd.read_excel("vragenlijst.xlsx")
+
+    return vragenlijst
+
+def speel(run, vragenlijst):
+    # while run:
+
 
 
 def main():
+    run = setup()
+    vragenlijst = lees_vragenlijst()
+    speel(run, vragenlijst)
     print("hallo")
 
 
