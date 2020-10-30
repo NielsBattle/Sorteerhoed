@@ -1,14 +1,11 @@
-import GameClass
+import game
 import time
 
-specialisatie_dict = {"A": "",
-                      "B": "",
-                      "C": "",
-                      "D": ""}
 
-
-def speel(run, vragenlijst, index):
-    scores_dict = {"SE": 0, "IAT": 0, "FICT": 0, "BDAM": 0}
+def speel(run: bool, vragenlijst, sorteerhoed: game):
+    print(type(vragenlijst))
+    scores_dict = {"FICT": 12, "IAT": 16, "SE": 15, "BDAM": 1}
+    index = sorteerhoed.index
     while run:
         if index == 15:
             break
@@ -23,13 +20,14 @@ def speel(run, vragenlijst, index):
     while True:
         print("running")
         time.sleep(1)
+        sorteerhoed.winnaar(scores_dict)
 
 
 def main():
-    game = GameClass.Game(0)
-    run = game.setup()
-    vragenlijst = game.lees_vragenlijst()
-    speel(run, vragenlijst, game.index)
+    sorteerhoed = game.Game(0)
+    run = sorteerhoed.setup()
+    vragenlijst = sorteerhoed.lees_vragenlijst()
+    speel(run, vragenlijst, sorteerhoed)
     print("hallo")
 
 
