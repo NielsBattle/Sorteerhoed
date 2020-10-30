@@ -1,39 +1,35 @@
-import pygame
-import pandas as pd
-import datetime
+import GameClass
+import time
 
-pygame.init()
-
-scores_dict = {"SE": 0, "IAT": 0, "FICT": 0, "BDAM": 0}
 specialisatie_dict = {"A": "",
                       "B": "",
                       "C": "",
                       "D": ""}
 
 
-def setup():
-    pd.set_option("display.max_columns", None)
-    pd.set_option("display.width", None)
-    pd.set_option("display.max_rows", None)
-    pygame.display.set_mode((640, 480))
-    pygame.display.set_caption("Sorteerhoed Applicatie | Alpha Lions")
+def speel(run, vragenlijst, index):
+    scores_dict = {"SE": 0, "IAT": 0, "FICT": 0, "BDAM": 0}
+    while run:
+        if index == 15:
+            break
+        print(str(vragenlijst["vraag"][index]))
+        print(str(vragenlijst["antwoord1"][index]))
+        print(str(vragenlijst["antwoord2"][index]))
+        print(str(vragenlijst["antwoord3"][index]))
+        print(str(vragenlijst["antwoord4"][index]))
+        print("\n")
+        index += 1
 
-    return True
-
-def lees_vragenlijst():
-    vragenlijst = pd.read_excel("vragenlijst.xlsx")
-
-    return vragenlijst
-
-def speel(run, vragenlijst):
-    # while run:
-
+    while True:
+        print("running")
+        time.sleep(1)
 
 
 def main():
-    run = setup()
-    vragenlijst = lees_vragenlijst()
-    speel(run, vragenlijst)
+    game = GameClass.Game(0)
+    run = game.setup()
+    vragenlijst = game.lees_vragenlijst()
+    speel(run, vragenlijst, game.index)
     print("hallo")
 
 
