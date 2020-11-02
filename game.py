@@ -16,6 +16,7 @@ class Game:
         pd.set_option("display.max_rows", None)
         pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("Sorteerhoed Applicatie | Alpha Lions")
+        # TODO Enable music
         # pygame.mixer_music.load("sound/HarryPotter.mp3")
         # pygame.mixer_music.play(-1)
         icon = pygame.image.load("images/harrypottericon_epg_icon.ico")
@@ -63,7 +64,8 @@ class Game:
         # Return winning spec list
         return winner_spec
 
-    def redraw_menu(self, button1, button2, button3):
+    @staticmethod
+    def redraw_menu(button1, button2, button3):
         win = pygame.display.get_surface()
         sorteerhoed = pygame.image.load("images/sorting_hat.png")
         scroll = pygame.image.load("images/unnamed.png")
@@ -71,14 +73,15 @@ class Game:
         win.blit(hogwarts, [0, 0])
         win.blit(sorteerhoed, [475, 40])
         font_titel = pygame.font.Font("font/Harry_potter.ttf", 75)
-        titel = font_titel.render("Sorteerhoed Alpha Lions", True,(255, 255, 255))
+        titel = font_titel.render("Sorteerhoed Alpha Lions", True, (255, 255, 255))
         win.blit(scroll, [375, 250])
         win.blit(titel, [375, 200])
         button1.draw(win, 0)
         button2.draw(win, 0)
         button3.draw(win, 0)
 
-    def redraw_quiz(self, vraag_db, antwoord1, antwoord2, antwoord3, antwoord4):
+    @staticmethod
+    def redraw_quiz(vraag_db, antwoord1, antwoord2, antwoord3, antwoord4):
         # draw elements to window
         background_image = pygame.image.load("images/forest.jpg").convert()
         sorting_hat = pygame.image.load("images/sorting_hat.png")
@@ -105,28 +108,28 @@ class Game:
         bdam = count_se.render(str(spec_count[1]), True, (255, 255, 255))
         se = count_se.render(str(spec_count[2]), True, (255, 255, 255))
         iat = count_se.render(str(spec_count[3]), True, (255, 255, 255))
-        win.blit(fict,[250, 400])
+        win.blit(fict, [250, 400])
         win.blit(bdam, [500, 400])
         win.blit(se, [750, 400])
         win.blit(iat, [1000, 400])
         back_button.draw(win, 100)
 
-
-
-
-    def open_outcome(self):
+    @staticmethod
+    def open_outcome():
         uitslag_db = pd.read_excel("Uitslagen.xlsx")
         uitslag_db_df = pd.DataFrame(uitslag_db)
 
         return uitslag_db_df
 
-    def write_outcome(self, winner_spec: list, dataframe):
+    @staticmethod
+    def write_outcome(winner_spec: list, dataframe):
         new_dataframe = dataframe
         for x in winner_spec:
             new_dataframe = new_dataframe.append({"Winnaar": x}, ignore_index=True)
         new_dataframe.to_excel('Uitslagen.xlsx', index=False)
 
-    def count_spec(self):
+    @staticmethod
+    def count_spec():
         uitslag_db = pd.read_excel("Uitslagen.xlsx")
         fict = 0
         bdam = 0

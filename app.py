@@ -38,7 +38,7 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 # Check if index is out of bound
                 uitkomst = sorteerhoed.winnaar(scores_dict)
                 print(uitkomst)
-                result_gelijk.winnaars = uitkomst
+                # result_gelijk.scherm(uitkomst)
                 result_gelijk.scherm(uitkomst)
                 break
 
