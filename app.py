@@ -1,30 +1,27 @@
 import game
 import pygame
 import ButtonClass
-import time
+
 
 def speel(run: bool, vragenlijst, sorteerhoed: game):
-    white = (255, 255, 255)
-    black = (0, 0, 0)
-    red = (255, 0, 0)
-    green = (0, 255, 0)
-    blue = (0, 0, 255)
     grey = (245, 245, 245)
-    darkerGrey = (96, 96, 96)
-    print(type(vragenlijst))
     scores_dict = {"FICT": 0, "IAT": 0, "SE": 0, "BDAM": 0}
     index = sorteerhoed.index
     while run:
         if index == 15:
+            # Check if index is out of bound
             uitkomst = sorteerhoed.winnaar(scores_dict)
+            print(uitkomst)
+            break
 
+        # Get question from question dataframe
         vraag = vragenlijst["vraag"][index]
-        answer1 = ButtonClass.Button(grey, 40, 125, 1100, 75,30, vragenlijst["antwoord1"][index])
-        answer2 = ButtonClass.Button(grey, 40, 215, 1100, 75,30, vragenlijst["antwoord2"][index])
-        answer3 = ButtonClass.Button(grey, 40, 305, 1100, 75,30, vragenlijst["antwoord3"][index])
-        answer4 = ButtonClass.Button(grey, 40, 395, 1100, 75,30, vragenlijst["antwoord4"][index])
-        #textRect = vraag.get_rect()
-        sorteerhoed.redrawWindow(vraag,answer1,answer2,answer3,answer4)
+        # Get answers from answer dataframe
+        answer1 = ButtonClass.Button(grey, 40, 125, 1100, 75, 30, vragenlijst["antwoord1"][index])
+        answer2 = ButtonClass.Button(grey, 40, 215, 1100, 75, 30, vragenlijst["antwoord2"][index])
+        answer3 = ButtonClass.Button(grey, 40, 305, 1100, 75, 30, vragenlijst["antwoord3"][index])
+        answer4 = ButtonClass.Button(grey, 40, 395, 1100, 75, 30, vragenlijst["antwoord4"][index])
+        sorteerhoed.redrawWindow(vraag, answer1, answer2, answer3, answer4)
         pygame.display.update()
         # gamequit
         for event in pygame.event.get():
@@ -36,37 +33,31 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if answer1.is_over(position):
-                    #fict
-                    scores_dict["FICT"] +=1
+                    scores_dict["FICT"] += 1
                     print(scores_dict)
                     index += 1
                 elif answer2.is_over(position):
-                    #iat
                     scores_dict["IAT"] += 1
                     print(scores_dict)
                     index += 1
                 elif answer3.is_over(position):
-                    #se
                     scores_dict["SE"] += 1
                     print(scores_dict)
                     index += 1
                 elif answer4.is_over(position):
-                    #bdam
                     scores_dict["BDAM"] += 1
                     print(scores_dict)
                     index += 1
 
-    # while True:
-    #     print("running")
-    #     time.sleep(1)
-    #     sorteerhoed.winnaar(scores_dict)
 
 def main():
+    # Initialize Game Object
     sorteerhoed = game.Game()
+    # Star game setup
     run = sorteerhoed.setup()
+    # Get questions and answers from Excelsheet
     vragenlijst = sorteerhoed.lees_vragenlijst()
     speel(run, vragenlijst, sorteerhoed)
-    print("hallo")
 
 
 if __name__ == '__main__':
