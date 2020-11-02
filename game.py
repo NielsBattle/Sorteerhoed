@@ -15,8 +15,8 @@ class Game:
         pd.set_option("display.max_rows", None)
         pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("Sorteerhoed Applicatie | Alpha Lions")
-        pygame.mixer_music.load("sound/HarryPotter.mp3")
-        pygame.mixer_music.play(-1)
+        #pygame.mixer_music.load("sound/HarryPotter.mp3")
+        #pygame.mixer_music.play(-1)
         icon = pygame.image.load("images/harrypottericon_epg_icon.ico")
         pygame.display.set_icon(icon)
 
@@ -52,3 +52,20 @@ class Game:
                 winnaar_spec = specialisatie[0]
 
         return winnaar_spec
+
+    # draw elements to window
+    def redrawWindow(self,vraagDB,antwoord1,antwoord2,antwoord3,antwoord4):
+        background_image = pygame.image.load("images/forest.jpg").convert()
+        sorting_hat = pygame.image.load("images/sorting_hat.png")
+        text_bulb = pygame.image.load("images/text_bulb.png")
+        fontvraag = pygame.font.Font('font/Harry_potter.ttf', 40)
+        vraag = fontvraag.render(vraagDB, True, (0, 0, 0), (255, 255, 255))
+        win = pygame.display.get_surface()
+        win.blit(background_image, [0, 0])
+        win.blit(text_bulb, [0, 0])
+        win.blit(sorting_hat, [-20, 470])
+        win.blit(vraag, [40,40])
+        antwoord1.draw(win, (0))
+        antwoord2.draw(win, (0))
+        antwoord3.draw(win, (0))
+        antwoord4.draw(win, (0))
