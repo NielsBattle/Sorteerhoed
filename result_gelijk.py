@@ -1,7 +1,6 @@
 # Pygame on
 import pygame
 import ButtonClass
-pygame.init()
 
 fict_spec = "Gryffindor"
 bdam_spec = "Slytherin"
@@ -25,7 +24,7 @@ spec_dict = {
 
 achtergrond = 'images/grote hal.jpg'
 
-winnaars = ["SE"]
+winnaars = list()
 picture = ""
 picture_twee = ""
 picture_drie = ""
@@ -128,7 +127,7 @@ def scherm(winnaars):
 
         return picture, picture_twee, button_een, button_twee, ondertekst, kleur_een, kleur_twee, iconX, iconY, icon_tweeX, icon_tweeY, icon_drieX, icon_drieY, picture_drie, kleur_drie, button_drie, textX, textY, iconTransformed, icon_tweeTransformed, icon_drieTransformed
     else:
-        print("Fout")
+        print("Fout result_gelijk")
 
 # scherm(winnaars1)
 alle_variabelen = scherm(winnaars)
@@ -138,12 +137,7 @@ alle_variabelen = scherm(winnaars)
 screen = pygame.display.set_mode((1280, 720))
 
 # Text
-FONT = pygame.font.Font("font/HARRYP__.TTF", 40)
-
-# Title and Icon
-pygame.display.set_caption("Sorteerhoed results page")
-icon = pygame.image.load('images/sorting hat.png')
-pygame.display.set_icon(icon)
+FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
 
 # background
 backgroundImg = pygame.image.load(achtergrond)
@@ -164,12 +158,15 @@ if len(winnaars) == 1: #Jasper was here
     def icon():
         screen.blit(alle_variabelen[6], (alle_variabelen[4], alle_variabelen[5]))
     def text():
+        FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
         label = FONT.render(alle_variabelen[2], True, (255, 255, 255))
         screen.blit(label, (alle_variabelen[7], alle_variabelen[8]))
     def text1():
+        FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
         label1 = FONT.render(alle_variabelen[9], True, (255, 255, 255))
         screen.blit(label1, (alle_variabelen[7], alle_variabelen[8]+50))
     def text2():
+        FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
         label2 = FONT.render(alle_variabelen[10], True, (255, 255, 255))
         screen.blit(label2, (alle_variabelen[7], alle_variabelen[8]+100))
     def back_button():
@@ -188,6 +185,7 @@ if len(winnaars) == 2:
     def icon_twee():
         screen.blit(alle_variabelen[14], (alle_variabelen[9], alle_variabelen[10]))
     def text():
+        FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
         label = FONT.render(alle_variabelen[4], True, (255, 255, 255))
         screen.blit(label, (alle_variabelen[15], alle_variabelen[16]))
     def back_button_twee():
@@ -225,6 +223,7 @@ if len(winnaars) == 3:
         terug_button.draw(screen, 0)
         return terug_button
     def text():
+        FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
         label = FONT.render(alle_variabelen[4], True, (255, 255, 255))
         screen.blit(label, (alle_variabelen[16], alle_variabelen[17]))
     def border_een():

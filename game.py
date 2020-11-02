@@ -1,8 +1,6 @@
 import pygame
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib
-
 
 
 class Game:
@@ -22,6 +20,7 @@ class Game:
         # pygame.mixer_music.play(-1)
         icon = pygame.image.load("images/harrypottericon_epg_icon.ico")
         pygame.display.set_icon(icon)
+        pygame.font.init()
 
         return True
 
@@ -144,7 +143,7 @@ class Game:
             elif x == "IAT":
                 iat += 1
             else:
-                print("Fout")
+                print("Fout met tellen")
         print(fict)
         print(bdam)
         print(se)

@@ -1,7 +1,7 @@
 import game
 import pygame
 import ButtonClass
-
+import result_gelijk
 
 def speel(run: bool, vragenlijst, sorteerhoed: game):
     state = "menu"
@@ -33,12 +33,13 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                     elif button3.is_over(position):
                         pygame.QUIT()
 
-
         if state == "vragen":
             if index == 15:
                 # Check if index is out of bound
                 uitkomst = sorteerhoed.winnaar(scores_dict)
                 print(uitkomst)
+                result_gelijk.winnaars = uitkomst
+                result_gelijk.scherm(uitkomst)
                 break
 
             # Get question from question dataframe
@@ -89,6 +90,7 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if back_button.is_over(position):
                         state = "menu"
+
 
 def main():
     # Initialize Game Object
