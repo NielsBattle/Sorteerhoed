@@ -89,10 +89,13 @@ class Game:
         fontvraag = pygame.font.Font('font/Harry_potter.ttf', 40)
         vraag = fontvraag.render(vraag_db, True, (0, 0, 0), (255, 255, 255))
         win = pygame.display.get_surface()
+
         win.blit(background_image, [0, 0])
         win.blit(text_bulb, [0, 0])
         win.blit(sorting_hat, [-20, 470])
-        win.blit(vraag, [40, 40])
+        win.blit(vraag, (
+            40 + (text_bulb.get_width() / 2 - vraag.get_width() / 2), 52))
+        #win.blit(vraag, [40, 40])
         antwoord1.draw(win, 0)
         antwoord2.draw(win, 0)
         antwoord3.draw(win, 0)
