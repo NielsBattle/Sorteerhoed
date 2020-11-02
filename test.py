@@ -1,13 +1,5 @@
-# Pygame on
 import pygame
 import ButtonClass
-import game
-
-# TODO delete this block
-# fict_spec = "Gryffindor"
-# bdam_spec = "Slytherin"
-# se_spec = "Hufflepuff"
-# iat_spec = "Ravenclaw"
 
 spec_dict = {
     "Info": {
@@ -24,56 +16,10 @@ spec_dict = {
     }
 }
 
-achtergrond = 'images/grote hal.jpg'
-
-picture = ""
-picture_twee = ""
-picture_drie = ""
-button_een = ""
-button_twee = ""
-ondertekst = ""
-kleur_een = ""
-kleur_twee = ""
-
-# # scherm(winnaars1)
-# alle_variabelen = tuple()
-# winnaars = []
-# def jemoeder(winnaars: list):
-#     alle_variabelen = scherm(winnaars)
-#     winnaars = winnaars
-#     return alle_variabelen
-
-# print(winnaars)
-# print(alle_variabelen)
-
-# scherm(winnaars3)
-
-# Screen create
-screen = pygame.display.get_surface()
-#
-# Text
-# font = pygame.font.Font("font/Harry_potter.ttf", 40)
-
-# background
-backgroundImg = pygame.image.load(achtergrond)
-background_x = 0
-background_y = 0
-
-
-def border_een():
-    screen.blit(border_img, (alle_variabelen[7] + 80, 350))
-
-
-# border
 border = pygame.image.load('images/border.png')
 border_img = pygame.transform.scale(border, (100, 50))
 
-
-def background():
-    screen.blit(backgroundImg, (background_x, background_y))
-
-
-def scherm2(winnaars: list, alle_variabelen: tuple):
+def scherm2(winnaars: list, alle_variabelen: tuple, screen):
     print(winnaars)
     print(alle_variabelen)
     if len(winnaars) == 1:  # Jasper was here
@@ -279,46 +225,3 @@ def scherm(winnaars: list):
         return image, image_twee, button_een, button_twee, ondertekst, kleur_een, kleur_twee, icon_x, icon_y, icon_twee_x, icon_twee_y, icon_drie_x, icon_drie_y, image_drie, kleur_drie, button_drie, text_x, text_y, icon_transformed, icon_twee_transformed, icon_drie_transformed
     else:
         print("Fout result_gelijk")
-
-# Game loop
-# running = True
-# while running:
-#
-#     # screen.fill((0, 0, 0))
-#
-#     for event in pygame.event.get():
-#         position = pygame.mouse.get_pos()
-#         if event.type == pygame.QUIT:
-#             running = False
-#
-#     if len(winnaars) == 1:
-#         background()
-#         icon()
-#         back_button()
-#         border_een()
-#         text()
-#         text1()
-#         text2()
-#         terug_button()
-#     if len(winnaars) == 2:
-#         background()
-#         icon()
-#         back_button()
-#         border_een()
-#         icon_twee()
-#         back_button_twee()
-#         border_twee()
-#         text()
-#     if len(winnaars) == 3:
-#         background()
-#         icon()
-#         back_button()
-#         border_een()
-#         icon_twee()
-#         icon_drie()
-#         back_button_twee()
-#         back_button_drie()
-#         border_twee()
-#         border_drie()
-#         text()
-#     pygame.display.update()

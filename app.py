@@ -2,13 +2,16 @@ import game
 import pygame
 import ButtonClass
 import result_gelijk
+import test
 
 def speel(run: bool, vragenlijst, sorteerhoed: game):
     state = "menu"
     grey = (245, 245, 245)
     scores_dict = {"FICT": 0, "IAT": 0, "SE": 0, "BDAM": 0}
     index = sorteerhoed.index
+    uitkomst = []
     while run:
+        print(state)
         if state == "menu":
             button1_tekst = "Start"
             button2_tekst = "Statistieken"
@@ -40,43 +43,49 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 print(uitkomst)
                 # result_gelijk.scherm(uitkomst)
                 # result_gelijk.scherm(uitkomst)
-                result_gelijk.jemoeder(uitkomst)
-                break
+                # scherminfo = result_gelijk.scherm(uitkomst)
+                # result_gelijk.scherm2(uitkomst, scherminfo)
+                # while True:
+                #     testing = test.scherm(uitkomst)
+                #     screen = pygame.display.get_surface()
+                #     test.scherm2(uitkomst, testing, screen)
+                # break
+                state = "uitslag"
+            if index < 15:
+                # Get question from question dataframe
+                vraag = vragenlijst["vraag"][index]
+                # Get answers from answer dataframe
+                answer1 = ButtonClass.Button(grey, 40, 125, 1100, 75, 30, vragenlijst["antwoord1"][index])
+                answer2 = ButtonClass.Button(grey, 40, 215, 1100, 75, 30, vragenlijst["antwoord2"][index])
+                answer3 = ButtonClass.Button(grey, 40, 305, 1100, 75, 30, vragenlijst["antwoord3"][index])
+                answer4 = ButtonClass.Button(grey, 40, 395, 1100, 75, 30, vragenlijst["antwoord4"][index])
+                sorteerhoed.redraw_quiz(vraag, answer1, answer2, answer3, answer4)
+                pygame.display.update()
+                # gamequit
+                for event in pygame.event.get():
+                    position = pygame.mouse.get_pos()
+                    if event.type == pygame.QUIT:
+                        run = False
+                        pygame.QUIT()
+                        quit()
 
-            # Get question from question dataframe
-            vraag = vragenlijst["vraag"][index]
-            # Get answers from answer dataframe
-            answer1 = ButtonClass.Button(grey, 40, 125, 1100, 75, 30, vragenlijst["antwoord1"][index])
-            answer2 = ButtonClass.Button(grey, 40, 215, 1100, 75, 30, vragenlijst["antwoord2"][index])
-            answer3 = ButtonClass.Button(grey, 40, 305, 1100, 75, 30, vragenlijst["antwoord3"][index])
-            answer4 = ButtonClass.Button(grey, 40, 395, 1100, 75, 30, vragenlijst["antwoord4"][index])
-            sorteerhoed.redraw_quiz(vraag, answer1, answer2, answer3, answer4)
-            pygame.display.update()
-            # gamequit
-            for event in pygame.event.get():
-                position = pygame.mouse.get_pos()
-                if event.type == pygame.QUIT:
-                    run = False
-                    pygame.QUIT()
-                    quit()
-
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    if answer1.is_over(position):
-                        scores_dict["FICT"] += 1
-                        print(scores_dict)
-                        index += 1
-                    elif answer2.is_over(position):
-                        scores_dict["IAT"] += 1
-                        print(scores_dict)
-                        index += 1
-                    elif answer3.is_over(position):
-                        scores_dict["SE"] += 1
-                        print(scores_dict)
-                        index += 1
-                    elif answer4.is_over(position):
-                        scores_dict["BDAM"] += 1
-                        print(scores_dict)
-                        index += 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        if answer1.is_over(position):
+                            scores_dict["FICT"] += 1
+                            print(scores_dict)
+                            index += 1
+                        elif answer2.is_over(position):
+                            scores_dict["IAT"] += 1
+                            print(scores_dict)
+                            index += 1
+                        elif answer3.is_over(position):
+                            scores_dict["SE"] += 1
+                            print(scores_dict)
+                            index += 1
+                        elif answer4.is_over(position):
+                            scores_dict["BDAM"] += 1
+                            print(scores_dict)
+                            index += 1
 
         if state == "stats":
             back_button = ButtonClass.Button(grey, 25, 600, 290, 75, 45, "Terug")
@@ -92,7 +101,8 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                     if back_button.is_over(position):
                         state = "menu"
 
-        # if state == "uitkomst":
+        if state == "uitslag":
+            print(uitkomst)
 
 
 
