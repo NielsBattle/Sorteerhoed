@@ -1,7 +1,7 @@
 import pygame
 import pandas as pd
 import matplotlib.pyplot as plt
-import test
+import results
 
 
 class Game:
@@ -17,9 +17,8 @@ class Game:
         pd.set_option("display.max_rows", None)
         pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("Sorteerhoed Applicatie | Alpha Lions")
-        # TODO Enable music
-        # pygame.mixer_music.load("sound/HarryPotter.mp3")
-        # pygame.mixer_music.play(-1)
+        pygame.mixer_music.load("sound/HarryPotter.mp3")
+        pygame.mixer_music.play(-1)
         icon = pygame.image.load("images/harrypottericon_epg_icon.ico")
         pygame.display.set_icon(icon)
         pygame.font.init()
@@ -96,7 +95,6 @@ class Game:
         win.blit(sorting_hat, [-20, 470])
         win.blit(vraag, (
             40 + (text_bulb.get_width() / 2 - vraag.get_width() / 2), 52))
-        #win.blit(vraag, [40, 40])
         antwoord1.draw(win, 0)
         antwoord2.draw(win, 0)
         antwoord3.draw(win, 0)
@@ -119,10 +117,10 @@ class Game:
         back_button.draw(win, 100)
         gryffindor = pygame.image.load("images/FICT_icon.png")
         slytherin = pygame.image.load("images/BDAM_icon.png")
-        hufflepuff= pygame.image.load("images/SE_icon.png")
+        hufflepuff = pygame.image.load("images/SE_icon.png")
         ravenclaw = pygame.image.load("images/IAT_icon.png")
         win = pygame.display.get_surface()
-        shrink_gryffindor = pygame.transform.scale(gryffindor,(250, 270))
+        shrink_gryffindor = pygame.transform.scale(gryffindor, (250, 270))
         shrink_slytherin = pygame.transform.scale(slytherin, (250, 270))
         shrink_hufflepuff = pygame.transform.scale(hufflepuff, (250, 270))
         shrink_ravenclaw = pygame.transform.scale(ravenclaw, (250, 270))
@@ -131,10 +129,11 @@ class Game:
         win.blit(shrink_hufflepuff, [625, 100])
         win.blit(shrink_ravenclaw, [875, 100])
 
-    def redraw_result(self,uitkomst,back_button):
-        testing = test.scherm(uitkomst)
+    @staticmethod
+    def redraw_result(uitkomst, back_button):
+        testing = results.scherm(uitkomst)
         screen = pygame.display.get_surface()
-        test.scherm2(uitkomst, testing, screen)
+        results.scherm2(uitkomst, testing, screen)
         back_button.draw(screen, 100)
 
     @staticmethod

@@ -1,5 +1,4 @@
 import pygame
-import ButtonClass
 
 spec_dict = {
     "Info": {
@@ -21,10 +20,10 @@ backgroundImg = pygame.image.load("images/grote hal.jpg")
 border = pygame.image.load('images/border.png')
 border_img = pygame.transform.scale(border, (100, 50))
 
+
 def scherm2(winnaars: list, alle_variabelen: tuple, screen):
-    print(alle_variabelen)
     if len(winnaars) == 1:
-        screen.blit(backgroundImg, (0,0))
+        screen.blit(backgroundImg, (0, 0))
         screen.blit(alle_variabelen[6], (alle_variabelen[4], alle_variabelen[5]))
 
         font = pygame.font.Font("font/Harry_potter.ttf", 40)
@@ -39,17 +38,15 @@ def scherm2(winnaars: list, alle_variabelen: tuple, screen):
         label2 = font.render(alle_variabelen[10], True, (255, 255, 255))
         screen.blit(label2, (alle_variabelen[7], alle_variabelen[8] + 100))
 
-
     elif len(winnaars) == 2:
         screen.blit(backgroundImg, (0, 0))
         screen.blit(alle_variabelen[13], (alle_variabelen[7], alle_variabelen[8]))
 
         screen.blit(alle_variabelen[14], (alle_variabelen[9], alle_variabelen[10]))
 
-        FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
-        label = FONT.render(alle_variabelen[4], True, (255, 255, 255))
+        font = pygame.font.Font("font/Harry_potter.ttf", 40)
+        label = font.render(alle_variabelen[4], True, (255, 255, 255))
         screen.blit(label, (alle_variabelen[15], alle_variabelen[16]))
-
 
     elif len(winnaars) == 3:
         screen.blit(backgroundImg, (0, 0))
@@ -64,7 +61,6 @@ def scherm2(winnaars: list, alle_variabelen: tuple, screen):
         screen.blit(label, (alle_variabelen[16], alle_variabelen[17]))
 
 
-
 def scherm(winnaars: list):
     if len(winnaars) == 1:
         image = f"images/{winnaars[0]}_icon.png"
@@ -75,7 +71,7 @@ def scherm(winnaars: list):
             ondertekst3 = "Je bent trots over je eigen creaties en gemotiveerd door te leren in je vak."
         elif winnaars[0] == "FICT":
             ondertekst1 = "Jij bent net zo geschikt voor Gryffindor als voor Forencsisch ICT!"
-            ondertekst2 = "Je leert kennis te hebben van computers, software, databases, netwerken, multimedi"
+            ondertekst2 = "Je leert kennis te hebben van computers, software, databases, netwerken en multimedia, etc."
             ondertekst3 = "Je weet waar de zwakke plekken zitten, welke informatie dan op straat ligt en wat daaraan te doen is."
         elif winnaars[0] == "BDAM":
             ondertekst1 = "Jij bent net zo geschikt voor Slytherin als voor Business-Data management!"
@@ -124,6 +120,7 @@ def scherm(winnaars: list):
         icon_twee_transformed = pygame.transform.scale(icon_twee_img, (250, 270))
 
         return image, image_twee, button_een, button_twee, ondertekst, kleur_een, kleur_twee, icon_x, icon_y, icon_twee_x, icon_twee_y, icon_drie_x, icon_drie_y, icon_transformed, icon_twee_transformed, text_x, text_y
+
     elif len(winnaars) == 3:
         image = f"images/{winnaars[0]}_icon.png"
         image_twee = f"images/{winnaars[1]}_icon.png"
@@ -157,5 +154,6 @@ def scherm(winnaars: list):
         icon_drie_transformed = pygame.transform.scale(icon_drie_img, (250, 270))
 
         return image, image_twee, button_een, button_twee, ondertekst, kleur_een, kleur_twee, icon_x, icon_y, icon_twee_x, icon_twee_y, icon_drie_x, icon_drie_y, image_drie, kleur_drie, button_drie, text_x, text_y, icon_transformed, icon_twee_transformed, icon_drie_transformed
+
     else:
         print("Fout result_gelijk")

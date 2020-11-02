@@ -1,8 +1,7 @@
 import game
 import pygame
 import ButtonClass
-import result_gelijk
-import test
+
 
 def speel(run: bool, vragenlijst, sorteerhoed: game):
     state = "menu"
@@ -11,7 +10,6 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
     index = sorteerhoed.index
     uitkomst = []
     while run:
-        print(state)
         if state == "menu":
             button1_tekst = "Start"
             button2_tekst = "Statistieken"
@@ -26,29 +24,22 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 position = pygame.mouse.get_pos()
                 if event.type == pygame.QUIT:
                     run = False
-                    pygame.QUIT()
+                    pygame.quit()
                     quit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if button1.is_over(position):
+                        scores_dict = {"FICT": 0, "IAT": 0, "SE": 0, "BDAM": 0}
                         state = "vragen"
                     elif button2.is_over(position):
                         state = "stats"
                     elif button3.is_over(position):
-                        pygame.QUIT()
+                        pygame.quit()
+                        quit()
 
         if state == "vragen":
             if index == 15:
                 # Check if index is out of bound
                 uitkomst = sorteerhoed.winnaar(scores_dict)
-                # result_gelijk.scherm(uitkomst)
-                # result_gelijk.scherm(uitkomst)
-                # scherminfo = result_gelijk.scherm(uitkomst)
-                # result_gelijk.scherm2(uitkomst, scherminfo)
-                # while True:
-                #     testing = test.scherm(uitkomst)
-                #     screen = pygame.display.get_surface()
-                #     test.scherm2(uitkomst, testing, screen)
-                # break
                 state = "uitslag"
 
             if index < 15:
@@ -66,25 +57,21 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                     position = pygame.mouse.get_pos()
                     if event.type == pygame.QUIT:
                         run = False
-                        pygame.QUIT()
+                        pygame.quit()
                         quit()
 
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if answer1.is_over(position):
                             scores_dict["FICT"] += 1
-                            print(scores_dict)
                             index += 1
                         elif answer2.is_over(position):
                             scores_dict["IAT"] += 1
-                            print(scores_dict)
                             index += 1
                         elif answer3.is_over(position):
                             scores_dict["SE"] += 1
-                            print(scores_dict)
                             index += 1
                         elif answer4.is_over(position):
                             scores_dict["BDAM"] += 1
-                            print(scores_dict)
                             index += 1
 
         if state == "stats":
@@ -95,7 +82,7 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 position = pygame.mouse.get_pos()
                 if event.type == pygame.QUIT:
                     run = False
-                    pygame.QUIT()
+                    pygame.quit()
                     quit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if back_button.is_over(position):
@@ -104,30 +91,24 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
         if state == "uitslag":
             back_button = ButtonClass.Button(grey, 25, 600, 290, 75, 45, "Terug")
             sorteerhoed.redraw_stats(back_button)
-            sorteerhoed.redraw_result(uitkomst,back_button)
+            sorteerhoed.redraw_result(uitkomst, back_button)
             pygame.display.update()
             for event in pygame.event.get():
                 position = pygame.mouse.get_pos()
                 if event.type == pygame.QUIT:
                     run = False
-                    pygame.QUIT()
+                    pygame.quit()
                     quit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if back_button.is_over(position):
                         state = "menu"
-
-            #result_gelijk.scherm(uitkomst)
-            #result_gelijk.scherm(uitkomst)
-            #scherminfo = result_gelijk.scherm(uitkomst)
-            #result_gelijk.scherm2(uitkomst, scherminfo)
-
-
+                        index = 0
 
 
 def main():
     # Initialize Game Object
     sorteerhoed = game.Game()
-    # Star game setup
+    # Game setup
     run = sorteerhoed.setup()
     # Get questions and answers from Excelsheet
     vragenlijst = sorteerhoed.lees_vragenlijst()
