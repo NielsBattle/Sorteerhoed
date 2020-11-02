@@ -88,10 +88,6 @@ class Game:
 
     def write_outcome(self, winner_spec: list, dataframe):
         new_dataframe = dataframe
-        print(new_dataframe)
         for x in winner_spec:
             new_dataframe = new_dataframe.append({"Winnaar": x}, ignore_index=True)
-            print(f"{new_dataframe}")
-            # break
-        print(new_dataframe)
         new_dataframe.to_excel('Uitslagen.xlsx', index=False)
