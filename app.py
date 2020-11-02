@@ -11,6 +11,7 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
         if index == 15:
             # Check if index is out of bound
             uitkomst = sorteerhoed.winnaar(scores_dict)
+
             print(uitkomst)
             break
 
