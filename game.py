@@ -113,9 +113,21 @@ class Game:
         win.blit(se, [750, 400])
         win.blit(iat, [1000, 400])
         back_button.draw(win, 100)
+        gryffindor = pygame.image.load("images/FICT_icon.png")
+        slytherin = pygame.image.load("images/BDAM_icon.png")
+        hufflepuff= pygame.image.load("images/SE_icon.png")
+        ravenclaw = pygame.image.load("images/IAT_icon.png")
+        win = pygame.display.get_surface()
+        shrink_gryffindor = pygame.transform.scale(gryffindor,(250, 270))
+        shrink_slytherin = pygame.transform.scale(slytherin, (250, 270))
+        shrink_hufflepuff = pygame.transform.scale(hufflepuff, (250, 270))
+        shrink_ravenclaw = pygame.transform.scale(ravenclaw, (250, 270))
+        win.blit(shrink_gryffindor, [125, 100])
+        win.blit(shrink_slytherin, [375, 100])
+        win.blit(shrink_hufflepuff, [625, 100])
+        win.blit(shrink_ravenclaw, [875, 100])
 
-    @staticmethod
-    def open_outcome():
+    def open_outcome(self):
         uitslag_db = pd.read_excel("Uitslagen.xlsx")
         uitslag_db_df = pd.DataFrame(uitslag_db)
 
