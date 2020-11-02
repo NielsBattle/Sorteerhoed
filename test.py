@@ -16,122 +16,56 @@ spec_dict = {
     }
 }
 
+backgroundImg = pygame.image.load("images/grote hal.jpg")
+
 border = pygame.image.load('images/border.png')
 border_img = pygame.transform.scale(border, (100, 50))
 
 def scherm2(winnaars: list, alle_variabelen: tuple, screen):
-    print(winnaars)
     print(alle_variabelen)
-    if len(winnaars) == 1:  # Jasper was here
-        def icon():
-            screen.blit(alle_variabelen[6], (alle_variabelen[4], alle_variabelen[5]))
+    if len(winnaars) == 1:
+        screen.blit(backgroundImg, (0,0))
+        screen.blit(alle_variabelen[6], (alle_variabelen[4], alle_variabelen[5]))
 
-        def text():
-            font = pygame.font.Font("font/Harry_potter.ttf", 40)
-            label = font.render(alle_variabelen[2], True, (255, 255, 255))
-            screen.blit(label, (alle_variabelen[7], alle_variabelen[8]))
+        font = pygame.font.Font("font/Harry_potter.ttf", 40)
+        label = font.render(alle_variabelen[2], True, (255, 255, 255))
+        screen.blit(label, (alle_variabelen[7], alle_variabelen[8]))
 
-        def text1():
-            font = pygame.font.Font("font/Harry_potter.ttf", 40)
-            label1 = font.render(alle_variabelen[9], True, (255, 255, 255))
-            screen.blit(label1, (alle_variabelen[7], alle_variabelen[8] + 50))
+        font = pygame.font.Font("font/Harry_potter.ttf", 40)
+        label1 = font.render(alle_variabelen[9], True, (255, 255, 255))
+        screen.blit(label1, (alle_variabelen[7], alle_variabelen[8] + 50))
 
-        def text2():
-            font = pygame.font.Font("font/Harry_potter.ttf", 40)
-            label2 = font.render(alle_variabelen[10], True, (255, 255, 255))
-            screen.blit(label2, (alle_variabelen[7], alle_variabelen[8] + 100))
+        font = pygame.font.Font("font/Harry_potter.ttf", 40)
+        label2 = font.render(alle_variabelen[10], True, (255, 255, 255))
+        screen.blit(label2, (alle_variabelen[7], alle_variabelen[8] + 100))
 
-        def back_button():
-            back_button = ButtonClass.Button((alle_variabelen[3]), alle_variabelen[4] + 80, 350, 100, 50, 30,
-                                             alle_variabelen[1])
-            back_button.draw(screen, 0)
-            return back_button
-
-        def terug_button():
-            terug_button = ButtonClass.Button((alle_variabelen[3]), 40, 650, 100, 50, 30, "Terug")
-            terug_button.draw(screen, 0)
-
-        def border_een():
-            screen.blit(border_img, (alle_variabelen[4] + 80, 350))
 
     elif len(winnaars) == 2:
-        def icon():
-            screen.blit(alle_variabelen[13], (alle_variabelen[7], alle_variabelen[8]))
+        screen.blit(backgroundImg, (0, 0))
+        screen.blit(alle_variabelen[13], (alle_variabelen[7], alle_variabelen[8]))
 
-        def icon_twee():
-            screen.blit(alle_variabelen[14], (alle_variabelen[9], alle_variabelen[10]))
+        screen.blit(alle_variabelen[14], (alle_variabelen[9], alle_variabelen[10]))
 
-        def text():
-            FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
-            label = FONT.render(alle_variabelen[4], True, (255, 255, 255))
-            screen.blit(label, (alle_variabelen[15], alle_variabelen[16]))
+        FONT = pygame.font.Font("font/Harry_potter.ttf", 40)
+        label = FONT.render(alle_variabelen[4], True, (255, 255, 255))
+        screen.blit(label, (alle_variabelen[15], alle_variabelen[16]))
 
-        def back_button_twee():
-            terug_button = ButtonClass.Button((alle_variabelen[6]), alle_variabelen[9] + 80, 350, 100, 50, 30,
-                                              alle_variabelen[3])
-            terug_button.draw(screen, 0)
-            return terug_button
-
-        def back_button():
-            terug_button = ButtonClass.Button((alle_variabelen[5]), alle_variabelen[7] + 80, 350, 100, 50, 30,
-                                              alle_variabelen[2])
-            terug_button.draw(screen, 0)
-            return terug_button
-
-        def border_een():
-            screen.blit(border_img, (alle_variabelen[7] + 80, 350))
-
-        def border_twee():
-            screen.blit(border_img, (alle_variabelen[9] + 80, 350))
-
-        def border_drie():
-            screen.blit(border_img, (alle_variabelen[11] + 80, 350))
 
     elif len(winnaars) == 3:
-        def icon():
-            screen.blit(alle_variabelen[18], (alle_variabelen[7], alle_variabelen[8]))
+        screen.blit(backgroundImg, (0, 0))
+        screen.blit(alle_variabelen[18], (alle_variabelen[7], alle_variabelen[8]))
 
-        def icon_twee():
-            screen.blit(alle_variabelen[19], (alle_variabelen[9], alle_variabelen[10]))
+        screen.blit(alle_variabelen[19], (alle_variabelen[9], alle_variabelen[10]))
 
-        def icon_drie():
-            screen.blit(alle_variabelen[20], (alle_variabelen[11], alle_variabelen[12]))
+        screen.blit(alle_variabelen[20], (alle_variabelen[11], alle_variabelen[12]))
 
-        def back_button():
-            terug_button = ButtonClass.Button((alle_variabelen[5]), alle_variabelen[7] + 80, 350, 100, 50, 30,
-                                              alle_variabelen[2])
-            terug_button.draw(screen, 0)
-            return terug_button
+        font = pygame.font.Font("font/Harry_potter.ttf", 40)
+        label = font.render(alle_variabelen[4], True, (255, 255, 255))
+        screen.blit(label, (alle_variabelen[16], alle_variabelen[17]))
 
-        def back_button_twee():
-            terug_button = ButtonClass.Button((alle_variabelen[6]), alle_variabelen[9] + 80, 350, 100, 50, 30,
-                                              alle_variabelen[3])
-            terug_button.draw(screen, 0)
-            return terug_button
-
-        def back_button_drie():
-            terug_button = ButtonClass.Button((alle_variabelen[14]), alle_variabelen[11] + 80, 350, 100, 50, 30,
-                                              alle_variabelen[15])
-            terug_button.draw(screen, 0)
-            return terug_button
-
-        def text():
-            font = pygame.font.Font("font/Harry_potter.ttf", 40)
-            label = font.render(alle_variabelen[4], True, (255, 255, 255))
-            screen.blit(label, (alle_variabelen[16], alle_variabelen[17]))
-
-        def border_een():
-            screen.blit(border_img, (alle_variabelen[7] + 80, 350))
-
-        def border_twee():
-            screen.blit(border_img, (alle_variabelen[9] + 80, 350))
-
-        def border_drie():
-            screen.blit(border_img, (alle_variabelen[11] + 80, 350))
 
 
 def scherm(winnaars: list):
-    print(winnaars)
     if len(winnaars) == 1:
         image = f"images/{winnaars[0]}_icon.png"
         button_een = spec_dict["Info"][winnaars[0]]

@@ -1,6 +1,7 @@
 import pygame
 import pandas as pd
 import matplotlib.pyplot as plt
+import test
 
 
 class Game:
@@ -129,6 +130,12 @@ class Game:
         win.blit(shrink_slytherin, [375, 100])
         win.blit(shrink_hufflepuff, [625, 100])
         win.blit(shrink_ravenclaw, [875, 100])
+
+    def redraw_result(self,uitkomst,back_button):
+        testing = test.scherm(uitkomst)
+        screen = pygame.display.get_surface()
+        test.scherm2(uitkomst, testing, screen)
+        back_button.draw(screen, 100)
 
     @staticmethod
     def open_outcome():

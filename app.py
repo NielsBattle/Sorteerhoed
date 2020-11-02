@@ -40,7 +40,6 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
             if index == 15:
                 # Check if index is out of bound
                 uitkomst = sorteerhoed.winnaar(scores_dict)
-                print(uitkomst)
                 # result_gelijk.scherm(uitkomst)
                 # result_gelijk.scherm(uitkomst)
                 # scherminfo = result_gelijk.scherm(uitkomst)
@@ -51,6 +50,7 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 #     test.scherm2(uitkomst, testing, screen)
                 # break
                 state = "uitslag"
+
             if index < 15:
                 # Get question from question dataframe
                 vraag = vragenlijst["vraag"][index]
@@ -102,7 +102,25 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                         state = "menu"
 
         if state == "uitslag":
-            print(uitkomst)
+            back_button = ButtonClass.Button(grey, 25, 600, 290, 75, 45, "Terug")
+            sorteerhoed.redraw_stats(back_button)
+            sorteerhoed.redraw_result(uitkomst,back_button)
+            pygame.display.update()
+            for event in pygame.event.get():
+                position = pygame.mouse.get_pos()
+                if event.type == pygame.QUIT:
+                    run = False
+                    pygame.QUIT()
+                    quit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if back_button.is_over(position):
+                        state = "menu"
+
+            #result_gelijk.scherm(uitkomst)
+            #result_gelijk.scherm(uitkomst)
+            #scherminfo = result_gelijk.scherm(uitkomst)
+            #result_gelijk.scherm2(uitkomst, scherminfo)
+
 
 
 
