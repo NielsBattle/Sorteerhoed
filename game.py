@@ -127,7 +127,8 @@ class Game:
         win.blit(shrink_hufflepuff, [625, 100])
         win.blit(shrink_ravenclaw, [875, 100])
 
-    def open_outcome(self):
+    @staticmethod
+    def open_outcome():
         uitslag_db = pd.read_excel("Uitslagen.xlsx")
         uitslag_db_df = pd.DataFrame(uitslag_db)
 
@@ -148,7 +149,6 @@ class Game:
         se = 0
         iat = 0
         for x in uitslag_db["Winnaar"]:
-            print(x)
             if x == "FICT":
                 fict += 1
             elif x == "BDAM":
@@ -159,8 +159,4 @@ class Game:
                 iat += 1
             else:
                 print("Fout met tellen")
-        print(fict)
-        print(bdam)
-        print(se)
-        print(iat)
         return fict, bdam, se, iat

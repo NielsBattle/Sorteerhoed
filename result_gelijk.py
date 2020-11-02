@@ -131,9 +131,16 @@ def scherm(winnaars: list):
     else:
         print("Fout result_gelijk")
 
-winnaars = ["SE"]
 # scherm(winnaars1)
-alle_variabelen = scherm(winnaars)
+alle_variabelen = tuple()
+winnaars = []
+def jemoeder(winnaars: list):
+    alle_variabelen = scherm(winnaars)
+    winnaars = winnaars
+
+print(winnaars)
+print(alle_variabelen)
+
 # scherm(winnaars3)
 
 # Screen create
@@ -290,45 +297,45 @@ if len(winnaars) == 3:
     def border_drie():
         screen.blit(border_img, (alle_variabelen[11] + 80, 350))
 
-# Game loop
-running = True
-while running:
-
-    screen.fill((0, 0, 0))
-
-    for event in pygame.event.get():
-        position = pygame.mouse.get_pos()
-        if event.type == pygame.QUIT:
-            running = False
-
-    if len(winnaars) == 1:
-        background()
-        icon()
-        back_button()
-        border_een()
-        text()
-        text1()
-        text2()
-        terug_button()
-    if len(winnaars) == 2:
-        background()
-        icon()
-        back_button()
-        border_een()
-        icon_twee()
-        back_button_twee()
-        border_twee()
-        text()
-    if len(winnaars) == 3:
-        background()
-        icon()
-        back_button()
-        border_een()
-        icon_twee()
-        icon_drie()
-        back_button_twee()
-        back_button_drie()
-        border_twee()
-        border_drie()
-        text()
-    pygame.display.update()
+# # Game loop
+# running = True
+# while running:
+#
+#     screen.fill((0, 0, 0))
+#
+#     for event in pygame.event.get():
+#         position = pygame.mouse.get_pos()
+#         if event.type == pygame.QUIT:
+#             running = False
+#
+#     if len(winnaars) == 1:
+#         background()
+#         icon()
+#         back_button()
+#         border_een()
+#         text()
+#         text1()
+#         text2()
+#         terug_button()
+#     if len(winnaars) == 2:
+#         background()
+#         icon()
+#         back_button()
+#         border_een()
+#         icon_twee()
+#         back_button_twee()
+#         border_twee()
+#         text()
+#     if len(winnaars) == 3:
+#         background()
+#         icon()
+#         back_button()
+#         border_een()
+#         icon_twee()
+#         icon_drie()
+#         back_button_twee()
+#         back_button_drie()
+#         border_twee()
+#         border_drie()
+#         text()
+#     pygame.display.update()

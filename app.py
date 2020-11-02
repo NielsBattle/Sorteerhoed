@@ -39,7 +39,8 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 uitkomst = sorteerhoed.winnaar(scores_dict)
                 print(uitkomst)
                 # result_gelijk.scherm(uitkomst)
-                result_gelijk.scherm(uitkomst)
+                # result_gelijk.scherm(uitkomst)
+                result_gelijk.jemoeder(uitkomst)
                 break
 
             # Get question from question dataframe
@@ -90,6 +91,9 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if back_button.is_over(position):
                         state = "menu"
+
+        # if state == "uitkomst":
+
 
 
 def main():
