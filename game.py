@@ -1,6 +1,7 @@
 import pygame
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib
 
 
 class Game:
@@ -23,7 +24,6 @@ class Game:
 
         return True
 
-    #
     @staticmethod
     def lees_vragenlijst():
         # Function for reading the questions and returning the questions and answers
