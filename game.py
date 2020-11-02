@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 
 class Game:
-    def __init__(self, index):
-        self.index = index
+    def __init__(self):
+        self.index = 0
 
     @staticmethod
     def setup():
