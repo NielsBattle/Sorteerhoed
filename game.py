@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 
 
+
 class Game:
     def __init__(self):
         self.index = 0
@@ -67,8 +68,8 @@ class Game:
         win = pygame.display.get_surface()
         sorteerhoed = pygame.image.load("images/sorting_hat.png")
         scroll = pygame.image.load("images/unnamed.png")
-        Hogwarts = pygame.image.load("images/Hogwarts.jpg")
-        win.blit(Hogwarts, [0, 0])
+        hogwarts = pygame.image.load("images/Hogwarts.jpg")
+        win.blit(hogwarts, [0, 0])
         win.blit(sorteerhoed, [475, 40])
         font_titel = pygame.font.Font("font/Harry_potter.ttf", 75)
         titel = font_titel.render("Sorteerhoed Alpha Lions", True,(255, 255, 255))
@@ -95,6 +96,25 @@ class Game:
         antwoord3.draw(win, 0)
         antwoord4.draw(win, 0)
 
+    def redraw_stats(self, back_button):
+        hogwarts = pygame.image.load("images/Hogwarts.jpg")
+        win = pygame.display.get_surface()
+        win.blit(hogwarts, [0, 0])
+        spec_count = self.count_spec()
+        count_se = pygame.font.Font("font/Harry_potter.ttf", 75)
+        fict = count_se.render(str(spec_count[0]), True, (255, 255, 255))
+        bdam = count_se.render(str(spec_count[1]), True, (255, 255, 255))
+        se = count_se.render(str(spec_count[2]), True, (255, 255, 255))
+        iat = count_se.render(str(spec_count[3]), True, (255, 255, 255))
+        win.blit(fict,[250, 400])
+        win.blit(bdam, [500, 400])
+        win.blit(se, [750, 400])
+        win.blit(iat, [1000, 400])
+        back_button.draw(win, 100)
+
+
+
+
     def open_outcome(self):
         uitslag_db = pd.read_excel("Uitslagen.xlsx")
         uitslag_db_df = pd.DataFrame(uitslag_db)
@@ -107,3 +127,26 @@ class Game:
             new_dataframe = new_dataframe.append({"Winnaar": x}, ignore_index=True)
         new_dataframe.to_excel('Uitslagen.xlsx', index=False)
 
+    def count_spec(self):
+        uitslag_db = pd.read_excel("Uitslagen.xlsx")
+        fict = 0
+        bdam = 0
+        se = 0
+        iat = 0
+        for x in uitslag_db["Winnaar"]:
+            print(x)
+            if x == "FICT":
+                fict += 1
+            elif x == "BDAM":
+                bdam += 1
+            elif x == "SE":
+                se += 1
+            elif x == "IAT":
+                iat += 1
+            else:
+                print("Fout")
+        print(fict)
+        print(bdam)
+        print(se)
+        print(iat)
+        return fict, bdam, se, iat
