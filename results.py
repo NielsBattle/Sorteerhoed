@@ -58,7 +58,9 @@ def scherm2(winnaars: list, alle_variabelen: tuple, screen):
 
         font = pygame.font.Font("font/Harry_potter.ttf", 40)
         label = font.render(alle_variabelen[4], True, (255, 255, 255))
+        extra_tekst = font.render("Begin opnieuw voor een exactere uitslag!", True, (255, 255, 255))
         screen.blit(label, (alle_variabelen[16], alle_variabelen[17]))
+        screen.blit(extra_tekst, (240, 540))
 
 
 def scherm(winnaars: list):
@@ -128,7 +130,7 @@ def scherm(winnaars: list):
         button_een = spec_dict["Info"][winnaars[0]]
         button_twee = spec_dict["Info"][winnaars[1]]
         button_drie = spec_dict["Info"][winnaars[2]]
-        ondertekst = f"Je hebt een combinatie van {button_een}, {button_twee} en {button_drie} Begin opnieuw voor een exactere uitslag!"
+        ondertekst = f"Je hebt een combinatie van {button_een}, {button_twee} en {button_drie}"
         kleur_een = spec_dict["Kleuren"][winnaars[0]]
         kleur_twee = spec_dict["Kleuren"][winnaars[1]]
         kleur_drie = spec_dict["Kleuren"][winnaars[2]]
@@ -139,7 +141,7 @@ def scherm(winnaars: list):
         icon_drie_x = 890
         icon_drie_y = 60
         text_x = 240
-        text_y = 540
+        text_y = 500
 
         # icon
         icon_img = pygame.image.load(image)
