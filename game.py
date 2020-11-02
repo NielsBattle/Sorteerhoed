@@ -17,8 +17,8 @@ class Game:
         pd.set_option("display.max_rows", None)
         pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("Sorteerhoed Applicatie | Alpha Lions")
-        pygame.mixer_music.load("sound/HarryPotter.mp3")
-        pygame.mixer_music.play(-1)
+        # pygame.mixer_music.load("sound/HarryPotter.mp3")
+        # pygame.mixer_music.play(-1)
         icon = pygame.image.load("images/harrypottericon_epg_icon.ico")
         pygame.display.set_icon(icon)
 
@@ -57,6 +57,9 @@ class Game:
                     # append winning spec with same score
                     winner_spec.append(spec[0])
 
+        outcome_df = self.open_outcome()
+        self.write_outcome(winner_spec, outcome_df)
+
         # Return winning spec list
         return winner_spec
 
@@ -92,4 +95,19 @@ class Game:
         antwoord3.draw(win, 0)
         antwoord4.draw(win, 0)
 
+    def open_outcome(self):
+        uitslag_db = pd.read_excel("Uitslagen.xlsx")
+        uitslag_db_df = pd.DataFrame(uitslag_db)
+
+        return uitslag_db_df
+
+    def write_outcome(self, winner_spec: list, dataframe):
+        new_dataframe = dataframe
+        print(new_dataframe)
+        for x in winner_spec:
+            new_dataframe = new_dataframe.append({"Winnaar": x}, ignore_index=True)
+            print(f"{new_dataframe}")
+            # break
+        print(new_dataframe)
+        new_dataframe.to_excel('Uitslagen.xlsx', index=False)
 

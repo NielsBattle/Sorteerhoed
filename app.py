@@ -33,6 +33,7 @@ def speel(run: bool, vragenlijst, sorteerhoed: game):
                     elif button3.is_over(position):
                         pygame.QUIT()
 
+
         if state == "vragen":
             if index == 15:
                 # Check if index is out of bound
