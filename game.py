@@ -60,7 +60,22 @@ class Game:
         # Return winning spec list
         return winner_spec
 
-    def redrawWindow(self, vraag_db, antwoord1, antwoord2, antwoord3, antwoord4):
+    def redraw_menu(self, button1, button2, button3):
+        win = pygame.display.get_surface()
+        sorteerhoed = pygame.image.load("images/sorting_hat.png")
+        scroll = pygame.image.load("images/unnamed.png")
+        forest = pygame.image.load("images/forest.jpg")
+        win.blit(forest, [0, 0])
+        win.blit(sorteerhoed, [475, 40])
+        font_titel = pygame.font.Font("font/Harry_potter.ttf", 75)
+        titel = font_titel.render("Sorteerhoed Alpha Lions", True,(255, 255, 255))
+        win.blit(scroll, [375, 250])
+        win.blit(titel, [375, 200])
+        button1.draw(win, 0)
+        button2.draw(win, 0)
+        button3.draw(win, 0)
+
+    def redraw_quiz(self, vraag_db, antwoord1, antwoord2, antwoord3, antwoord4):
         # draw elements to window
         background_image = pygame.image.load("images/forest.jpg").convert()
         sorting_hat = pygame.image.load("images/sorting_hat.png")
@@ -76,3 +91,5 @@ class Game:
         antwoord2.draw(win, 0)
         antwoord3.draw(win, 0)
         antwoord4.draw(win, 0)
+
+
