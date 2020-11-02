@@ -97,7 +97,7 @@ class Game:
         antwoord4.draw(win, 0)
 
     def redraw_stats(self, back_button):
-        hogwarts = pygame.image.load("images/Hogwarts.jpg")
+        hogwarts = pygame.image.load("images/Hogwarts_dark.png")
         win = pygame.display.get_surface()
         win.blit(hogwarts, [0, 0])
         spec_count = self.count_spec()
