@@ -1,6 +1,6 @@
-import game
 import pygame
 import ButtonClass
+import game
 
 
 def speel(run: bool, vragenlijst, sorteerhoed: game):

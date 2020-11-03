@@ -25,6 +25,6 @@ class Button:
                 self.x + (self.width / 2 - text.get_width() / 2), self.y + (self.height / 2 - text.get_height() / 2)))
 
     def is_over(self, position):
-        if position[0] > self.x and position[0] < self.x + self.width:
-            if position[1] > self.y and position[1] < self.y + self.height:
+        if self.x < position[0] < self.x + self.width:
+            if self.y < position[1] < self.y + self.height:
                 return True

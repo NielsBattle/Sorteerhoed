@@ -1,5 +1,6 @@
 import pygame
 
+
 spec_dict = {
     "Info": {
         "FICT": "Gryffindor",
